@@ -1,3 +1,5 @@
+# Alkstore
+
 ## Installation
 
 ```
@@ -6,6 +8,29 @@ or
 yarn add alkstore
 or
 pnpm add alkstore
+```
+
+## Development mode
+
+1. Clone repository and install dependencies
+
+```sh
+git clone alkstore
+cd alkstore
+pnpm install
+```
+
+2. Go to example folder and install dependencies
+
+```sh
+cd example
+pnpm install
+```
+
+3. Run example
+
+```sh
+pnpm dev
 ```
 
 ## Getting started
@@ -26,6 +51,7 @@ export type RootState = typeof initialState;
 2. Define actions
 
 ```ts
+// actions.ts
 export function incrementCount(incrementValue = 1) {
   return { type: 'increment', payload: { count: incrementValue } };
 }
@@ -74,7 +100,7 @@ const reducers = combineReducers<RootState>(countReducer);
 
 4. Create store and provide app with it
 
-```ts
+```tsx
 // index.ts
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -100,7 +126,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
 5. Use store in your app
 
-```ts
+```tsx
 // app.tsx
 import { useSelector } from 'alkstore';
 
