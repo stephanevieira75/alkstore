@@ -24,7 +24,7 @@ export function useSelector<State = unknown, Selected = unknown>(selector: (stat
     return () => {
       store.unsubscribe(currentKey);
     };
-  }, []);
+  }, [currentKey, selector, store]);
 
   return selectedState;
 }
