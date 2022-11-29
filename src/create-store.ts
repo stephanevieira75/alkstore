@@ -1,3 +1,4 @@
+import { isObject } from './utils';
 import { Action, Store, Reducer, Listener, Listeners, CreateStoreParams } from './types';
 
 export function createStore<State>({ initialState, reducers }: CreateStoreParams<State>): Store<State> {
@@ -13,6 +14,10 @@ export function createStore<State>({ initialState, reducers }: CreateStoreParams
   function dispatch(action: Action<State>) {
     const prevState = getState();
 
+    if (!isObject(action)) {
+      throw new Error(`Action must be a plain object. Instead, the actual type was: '${typeof action}'.`);
+    }
+
     try {
       // Check if the reducer exists
       if (reducers[action.type]) {
@@ -25,7 +30,7 @@ export function createStore<State>({ initialState, reducers }: CreateStoreParams
       } else {
         // If the reducer is defined, call it
         state = currentReducer(state, action);
-        console.log(`${action.type}`, { prevState, action, state, listeners, isSubscribed });
+        console.log(`${action.type}`, { prevState, action, state });
 
         // If the store is subscribed, call the listeners
         notify();
