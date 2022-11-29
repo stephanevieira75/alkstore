@@ -12,6 +12,12 @@ jobs:
         - uses: actions/checkout@v2
         - name: Install Alkstore modules
           run: pnpm install
+        - name: Run Alkstore lint
+          run: pnpm lint
+        - name: Run Alkstore prettier
+          run: pnpm prettier
+        - name: Run Alkstore test
+          run: pnpm test
         - name: Run Alkstore build
           run: pnpm build
         - name: Run Example build
