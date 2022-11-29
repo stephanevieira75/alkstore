@@ -1,7 +1,7 @@
 {
   "name": "alkstore",
   "author": "stephane.vieira75",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Simple state container for JavaScript apps",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
