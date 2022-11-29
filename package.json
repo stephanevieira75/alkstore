@@ -1,0 +1,51 @@
+{
+  "name": "alkstore",
+  "author": "stephane.vieira75",
+  "version": "1.0.02",
+  "description": "Simple state container for JavaScript apps",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm build:esm && pnpm build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "prepare": "pnpm run build",
+    "prepublishOnly": "pnpm run prettier && pnpm run lint",
+    "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
+    "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\""
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "state",
+    "store"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephanevieira75/alkstore.git"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.25",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.8.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.3"
+  }
+}
