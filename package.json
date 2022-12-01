@@ -1,7 +1,7 @@
 {
   "name": "alkstore",
-  "author": "stephane.vieira75",
-  "version": "1.0.5",
+  "author": "Stéphane Vieira <stephane.vieira@me.com> (https://github.com/stephanevieira75)",
+  "version": "1.0.6",
   "description": "Simple state container for JavaScript apps",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -19,8 +19,10 @@
   "keywords": [
     "react",
     "typescript",
+    "store",
     "state",
-    "store"
+    "reducer",
+    "immutable"
   ],
   "repository": {
     "type": "git",
