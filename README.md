@@ -1,4 +1,8 @@
-# Alkstore
+# 🦫 Alkstore
+
+Alkstore is a simple, fast and awesome state container for your JavaScript apps.
+
+It is mainly inspired by [redux](https://redux.js.org/) but it's lighter and simpler.
 
 ## Installation
 
@@ -8,29 +12,6 @@ or
 yarn add alkstore
 or
 pnpm add alkstore
-```
-
-## Development mode
-
-1. Clone repository and install dependencies
-
-```sh
-git clone alkstore
-cd alkstore
-pnpm install
-```
-
-2. Go to example folder and install dependencies
-
-```sh
-cd example
-pnpm install
-```
-
-3. Run example
-
-```sh
-pnpm dev
 ```
 
 ## Getting started
@@ -137,10 +118,10 @@ function App() {
   const count = useSelector(selectCount);
 
   return (
-    <div className="app">
+    <div>
       <p>
         You have clicked the button
-        <strong id="count"> {count}</strong> times.
+        <strong> {count}</strong> times.
       </p>
 
       <div>
@@ -154,3 +135,50 @@ function App() {
 
 export default App;
 ```
+
+## Prerequisites in development mode
+
+- In order to run the application, you need to have installed [pnpm](https://pnpm.io/).
+
+```bash
+npm install -g pnpm
+```
+
+## Start using development mode
+
+1. Clone repository and install dependencies
+
+```sh
+git clone alkstore
+cd alkstore
+pnpm install
+```
+
+2. Go to `example` folder and install dependencies
+
+```sh
+cd example
+pnpm install
+```
+
+3. Run example
+
+```sh
+pnpm dev
+```
+
+## In development mode you can run the following commands
+
+### `alkstore`
+
+- `pnpm build` - build alkstore package
+- `build:esm` - build esm modules
+- `build:cjs` - build cjs modules
+- `pnpm lint` - run linter
+- `pnpm test` - run tests
+
+### `alkstore/example`
+
+- `pnpm dev` - run example app in development mode
+- `pnpm build` - build example app
+- `pnpm preview` - preview production build
