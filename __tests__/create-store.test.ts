@@ -1,78 +1,38 @@
-import { Action, combineReducers, createStore, Reducers } from '../src/';
+import { fakeActions, fakeInitialState, fakeStore } from '../constants';
 
-const initialState = {
-  count: 0,
-};
-
-type RootState = typeof initialState;
-
-const countReducers: Reducers<RootState, Action<RootState>> = {
-  increment(state, action) {
-    return {
-      ...state,
-      count: action.payload.count ? state.count + action.payload.count : state.count,
-    };
-  },
-  decrement(state, action) {
-    return {
-      ...state,
-      count: action.payload.count ? state.count - action.payload.count : state.count,
-    };
-  },
-  reset(state, action) {
-    return {
-      ...state,
-      count: action.payload.count ?? 0,
-    };
-  },
-};
-
-const actions = {
-  incrementCount(incrementValue = 1) {
-    return { type: 'increment', payload: { count: incrementValue } };
-  },
-  resetCount(reset = 0) {
-    return { type: 'reset', payload: { count: reset } };
-  },
-};
-
-const store = createStore<RootState>({
-  initialState,
-  reducers: combineReducers(countReducers),
-});
-
-describe('create-store', function () {
+const key = 'create-store';
+describe(key, () => {
   beforeAll(() => {
-    store.subscribe('create-store-test', (state) => console.log('state', state));
+    fakeStore.subscribe(key, (state) => console.log('state', state));
   });
 
   afterAll(() => {
-    store.unsubscribe('create-store-test');
+    fakeStore.unsubscribe(key);
   });
 
   afterEach(() => {
-    store.dispatch(actions.resetCount());
+    fakeStore.dispatch(fakeActions.resetCount());
   });
 
   it('should be defined', () => {
-    expect(store).toBeDefined();
+    expect(fakeStore).toBeDefined();
   });
 
   it('should have initial state', () => {
-    expect(store.getState()).toEqual(initialState);
+    expect(fakeStore.getState()).toEqual(fakeInitialState);
   });
 
   it('should dispatch action', () => {
-    store.dispatch(actions.incrementCount());
+    fakeStore.dispatch(fakeActions.incrementCount());
 
-    expect(store.getState()).toEqual({ count: initialState.count + 1 });
+    expect(fakeStore.getState()).toEqual({ count: fakeInitialState.count + 1 });
 
-    store.dispatch(actions.incrementCount(2));
+    fakeStore.dispatch(fakeActions.incrementCount(2));
   });
 
   it('should dispatch action with payload', () => {
-    store.dispatch(actions.incrementCount(2));
+    fakeStore.dispatch(fakeActions.incrementCount(2));
 
-    expect(store.getState()).toEqual({ count: initialState.count + 2 });
+    expect(fakeStore.getState()).toEqual({ count: fakeInitialState.count + 2 });
   });
 });
